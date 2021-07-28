@@ -17,6 +17,6 @@ Route::post('/login',[LoginController::class,'login']);
 Route::post('/category', [CategoryController::class, 'create']);
 
 
-//Route::middleware('auth:api')->group(function (){
-//
-//});
+Route::middleware('auth:sanctum')->group(function (){
+    Route::get('/users',[RegisterController::class,'index']);
+});

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin\Api\Auth;
 use App\Http\Controllers\Controller;
 
 use App\Models\Admin;
-use Illuminate\Http\Response;
-use App\Http\Resources\RegisterResource;
+use App\Models\User;
 use App\Http\Requests\RegisterRequest;
-use function Symfony\Component\Translation\t;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class RegisterController extends Controller
@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'email'=>$request->post('email'),
             'address'=>$request->post('address'),
             'phone'=>$request->post('phone'),
-            'password'=>bcrypt($request->post('phone')),
+            'password'=> Hash::make($request->post('password')),
         ]);
         $token = $user->createToken('auth_token')->plainTextToken;
 
