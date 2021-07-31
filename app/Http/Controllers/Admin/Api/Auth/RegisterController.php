@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin\Api\Auth;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Resources\RegisterResource;
 use App\Models\Admin;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -29,12 +31,13 @@ class RegisterController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
 
-//        return (new RegisterResource($user))
-//            ->response()
-//            ->setStatusCode(Response::HTTP_CREATED);
-        return \response()->json([
-            'assess_token' => $token,
-            'token_type'=>'Bearer'
-        ]);
+        return (new RegisterResource($user))
+            ->response()->setJson($token)
+            ->setStatusCode(Response::HTTP_CREATED);
+
+//        return \response()->json([
+//            'assess_token' => $token,
+//            'token_type'=>'Bearer'
+//        ]);
     }
 }

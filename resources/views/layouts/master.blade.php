@@ -18,16 +18,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
+<body class="bg-gray-100">
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4 ">
+        @yield('content')
+    </main>
 
-    </div>
-
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+<!-- Scripts -->
+<script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

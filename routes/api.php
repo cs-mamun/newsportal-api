@@ -11,12 +11,12 @@ use App\Http\Controllers\Admin\CategoryController;
 | API Routes
 |--------------------------------------------------------------------------
 */
-Route::post('/register',[RegisterController::class,'create']);
-Route::post('/login',[LoginController::class,'login']);
+Route::post('/register', [RegisterController::class, 'create']);
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::post('/category', [CategoryController::class, 'create']);
 
 
-Route::middleware('auth:sanctum')->group(function (){
-    Route::get('/users',[RegisterController::class,'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/users', [RegisterController::class, 'index']);
 });
